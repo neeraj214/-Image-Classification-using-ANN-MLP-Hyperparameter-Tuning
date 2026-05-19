@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__
+*.pyc
+*.pyo
+
+# Environments
+.env
+venv/
+
+# Dependencies
+node_modules/
+
+# Model checkpoints (large files)
+*.h5
+*.pkl
+
+# Generated data
+data/processed/
+
+# OS/IDE files
+.DS_Store
+.idea/
+.vscode/
+
+# Explicitly do not ignore
+!outputs/*.json
+!outputs/*.png
+!README.md
