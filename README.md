@@ -1,62 +1,86 @@
-# CIFAR-10 Image Classification using ANN/MLP
+# CIFAR-10 Image Classification: MLP vs CNN
 
-This project implements a complete pipeline for classifying images from the CIFAR-10 dataset using an Artificial Neural Network (Multi-Layer Perceptron). It includes data exploration, preprocessing, model training, and hyperparameter tuning.
+This project provides a comprehensive pipeline for image classification on the CIFAR-10 dataset. It benchmarks a standard Multi-Layer Perceptron (MLP) against a Convolutional Neural Network (CNN), including hyperparameter tuning and activation function analysis.
 
-## Project Structure
+## 📌 Table of Contents
+- [Project Overview](#project-overview)
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Workflow](#workflow)
+- [Model Architectures](#model-architectures)
+- [Results & Outputs](#results--outputs)
 
-- `src/`: Source code for the project.
-  - `data_exploration.py`: Loads the dataset and generates a sample grid of images.
-  - `preprocess.py`: Normalizes images and prepares them for the MLP model.
-  - `mlp_model.py`: Builds, trains, and evaluates the baseline MLP model.
-  - `cnn_model.py`: Builds, trains, and evaluates the baseline CNN model.
-  - `activation_comparison.py`: Compares MLP performance across different activation functions (ReLU, Sigmoid, Tanh).
-  - `hyperparameter_tuning.py`: Performs a grid search to find the best model parameters.
-- `data/`: (Generated) Contains processed numpy arrays.
-- `models/`: (Generated) Contains saved model files (`.h5`).
-- `outputs/`: (Generated) Contains plots, training history, and evaluation metrics.
+## 🚀 Project Overview
+The goal of this project is to demonstrate the performance difference between dense neural networks (ANN/MLP) and spatial-aware networks (CNN) for image recognition. It covers:
+- Data exploration and visualization.
+- Data preprocessing (normalization, flattening, one-hot encoding).
+- Performance benchmarking of different activation functions.
+- Automated hyperparameter tuning using grid search.
 
-## Setup and Usage
+## 📂 Project Structure
+```text
+├── data/               # Processed datasets (numpy arrays)
+├── models/             # Saved trained models (.h5)
+├── outputs/            # Plots, logs, and evaluation metrics
+├── src/                # Source code
+│   ├── __init__.py
+│   ├── data_exploration.py
+│   ├── preprocess.py
+│   ├── mlp_model.py
+│   ├── cnn_model.py
+│   ├── activation_comparison.py
+│   └── hyperparameter_tuning.py
+└── README.md
+```
 
-1. **Install Dependencies**:
-   ```bash
-   pip install numpy matplotlib keras tensorflow scikit-learn
-   ```
+## 🛠 Requirements
+Install the necessary libraries using pip:
+```bash
+pip install numpy matplotlib keras tensorflow scikit-learn
+```
 
-2. **Data Exploration**:
-   Run the exploration script to see dataset details and a sample grid.
-   ```bash
-   python src/data_exploration.py
-   ```
+## 🔄 Workflow
 
-3. **Preprocessing**:
-   Prepare the data for training.
-   ```bash
-   python src/preprocess.py
-   ```
+### 1. Exploration
+Visualize the CIFAR-10 classes and data distribution.
+```bash
+python src/data_exploration.py
+```
 
-4. **Training Baseline Models**:
-   Train the baseline MLP model:
-   ```bash
-   python src/mlp_model.py
-   ```
-   Train the baseline CNN model:
-   ```bash
-   python src/cnn_model.py
-   ```
+### 2. Preprocessing
+Prepare the data for both MLP (flattened) and CNN (3D) models.
+```bash
+python src/preprocess.py
+```
 
-5. **Activation Comparison**:
-   Compare how different activation functions impact training.
-   ```bash
-   python src/activation_comparison.py
-   ```
+### 3. Training
+Train the baseline models to establish performance benchmarks.
+```bash
+python src/mlp_model.py
+python src/cnn_model.py
+```
 
-6. **Hyperparameter Tuning**:
-   Run the tuning script to find optimal parameters.
-   ```bash
-   python src/hyperparameter_tuning.py
-   ```
+### 4. Analysis
+Compare activation functions (ReLU, Sigmoid, Tanh) or run hyperparameter tuning.
+```bash
+python src/activation_comparison.py
+python src/hyperparameter_tuning.py
+```
 
-## Results
+## 🧠 Model Architectures
 
-- Training history and classification reports are saved in the `outputs/` directory.
-- The best model is saved in the `models/` directory.
+### Multi-Layer Perceptron (MLP)
+- **Input**: Flattened 3072 features (32x32x3).
+- **Hidden Layers**: Dense(512) → Dense(256) → Dense(128).
+- **Regularization**: Dropout (0.3) after each hidden layer.
+
+### Convolutional Neural Network (CNN)
+- **Feature Extraction**: 4x Conv2D layers with BatchNormalization.
+- **Downsampling**: MaxPooling2D after every two conv layers.
+- **Classifier**: Flatten → Dense(256) → Dense(10).
+
+## 📊 Results & Outputs
+- **Plots**: `outputs/sample_grid.png`, `outputs/activation_comparison.png`.
+- **Metrics**: `outputs/*_meta.json` (Accuracy, training time, params).
+- **History**: `outputs/*_history.json` (Epoch-wise loss and accuracy).
+- **Models**: `models/*.h5` (Pre-trained model weights).
