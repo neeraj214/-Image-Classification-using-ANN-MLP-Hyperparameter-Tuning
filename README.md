@@ -9,6 +9,7 @@ This project implements a complete pipeline for classifying images from the CIFA
   - `preprocess.py`: Normalizes images and prepares them for the MLP model.
   - `mlp_model.py`: Builds, trains, and evaluates the baseline MLP model.
   - `cnn_model.py`: Builds, trains, and evaluates the baseline CNN model.
+  - `activation_comparison.py`: Compares MLP performance across different activation functions (ReLU, Sigmoid, Tanh).
   - `hyperparameter_tuning.py`: Performs a grid search to find the best model parameters.
 - `data/`: (Generated) Contains processed numpy arrays.
 - `models/`: (Generated) Contains saved model files (`.h5`).
@@ -43,7 +44,13 @@ This project implements a complete pipeline for classifying images from the CIFA
    python src/cnn_model.py
    ```
 
-5. **Hyperparameter Tuning**:
+5. **Activation Comparison**:
+   Compare how different activation functions impact training.
+   ```bash
+   python src/activation_comparison.py
+   ```
+
+6. **Hyperparameter Tuning**:
    Run the tuning script to find optimal parameters.
    ```bash
    python src/hyperparameter_tuning.py
