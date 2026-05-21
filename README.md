@@ -29,6 +29,7 @@ The goal of this project is to demonstrate the performance difference between de
 │   ├── mlp_model.py
 │   ├── cnn_model.py
 │   ├── activation_comparison.py
+│   ├── optimizer_comparison.py
 │   └── hyperparameter_tuning.py
 └── README.md
 ```
@@ -61,9 +62,10 @@ python src/cnn_model.py
 ```
 
 ### 4. Analysis
-Compare activation functions (ReLU, Sigmoid, Tanh) or run hyperparameter tuning.
+Compare activation functions (ReLU, Sigmoid, Tanh), optimizers (Adam, SGD, RMSprop), or run hyperparameter tuning.
 ```bash
 python src/activation_comparison.py
+python src/optimizer_comparison.py
 python src/hyperparameter_tuning.py
 ```
 
