@@ -30,8 +30,9 @@ The goal of this project is to demonstrate the performance difference between de
 │   ├── cnn_model.py
 │   ├── activation_comparison.py
     ├── optimizer_comparison.py
-    ├── mlp_grid_search.py
-    └── hyperparameter_tuning.py
+     ├── mlp_grid_search.py
+     ├── mlp_random_search.py
+     └── hyperparameter_tuning.py
 └── README.md
 ```
 
@@ -67,9 +68,10 @@ Compare activation functions (ReLU, Sigmoid, Tanh), optimizers (Adam, SGD, RMSpr
 ```bash
   python src/activation_comparison.py
   python src/optimizer_comparison.py
-  python src/mlp_grid_search.py
-  python src/hyperparameter_tuning.py
-  ```
+   python src/mlp_grid_search.py
+   python src/mlp_random_search.py
+   python src/hyperparameter_tuning.py
+   ```
 
 ## 🧠 Model Architectures
 
