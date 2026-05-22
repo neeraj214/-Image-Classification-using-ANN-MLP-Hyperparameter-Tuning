@@ -19,6 +19,9 @@ The goal of this project is to demonstrate the performance difference between de
 
 ## 📂 Project Structure
 ```text
+├── backend/            # FastAPI application
+│   ├── main.py
+│   └── requirements.txt
 ├── data/               # Processed datasets (numpy arrays)
 ├── models/             # Saved trained models (.h5)
 ├── outputs/            # Plots, logs, and evaluation metrics
@@ -78,6 +81,12 @@ Compare activation functions (ReLU, Sigmoid, Tanh), optimizers (Adam, SGD, RMSpr
     python src/benchmark.py
     python src/hyperparameter_tuning.py
     ```
+
+### 5. Deployment
+Start the FastAPI backend server for inference.
+```bash
+uvicorn backend.main:app --reload
+```
 
 ## 🧠 Model Architectures
 
