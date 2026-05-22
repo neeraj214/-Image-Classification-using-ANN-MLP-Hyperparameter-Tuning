@@ -33,6 +33,7 @@ The goal of this project is to demonstrate the performance difference between de
      ├── mlp_grid_search.py
      ├── mlp_random_search.py
      ├── plot_curves.py
+     ├── plot_confusion.py
      └── hyperparameter_tuning.py
 └── README.md
 ```
@@ -72,6 +73,7 @@ Compare activation functions (ReLU, Sigmoid, Tanh), optimizers (Adam, SGD, RMSpr
    python src/mlp_grid_search.py
    python src/mlp_random_search.py
     python src/plot_curves.py
+    python src/plot_confusion.py
     python src/hyperparameter_tuning.py
     ```
 
@@ -88,7 +90,7 @@ Compare activation functions (ReLU, Sigmoid, Tanh), optimizers (Adam, SGD, RMSpr
 - **Classifier**: Flatten → Dense(256) → Dense(10).
 
 ## 📊 Results & Outputs
-- **Plots**: `outputs/sample_grid.png`, `outputs/activation_comparison.png`.
+- **Plots**: `outputs/sample_grid.png`, `outputs/activation_comparison.png`, `outputs/confusion_matrices.png`.
 - **Metrics**: `outputs/*_meta.json` (Accuracy, training time, params).
 - **History**: `outputs/*_history.json` (Epoch-wise loss and accuracy).
 - **Models**: `models/*.h5` (Pre-trained model weights).
