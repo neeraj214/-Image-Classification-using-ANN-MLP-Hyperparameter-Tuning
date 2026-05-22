@@ -22,6 +22,10 @@ The goal of this project is to demonstrate the performance difference between de
 ├── backend/            # FastAPI application
 │   ├── main.py
 │   └── requirements.txt
+├── frontend/           # React application
+│   ├── src/
+│   ├── public/
+│   └── package.json
 ├── data/               # Processed datasets (numpy arrays)
 ├── models/             # Saved trained models (.h5)
 ├── outputs/            # Plots, logs, and evaluation metrics
@@ -32,13 +36,13 @@ The goal of this project is to demonstrate the performance difference between de
 │   ├── mlp_model.py
 │   ├── cnn_model.py
 │   ├── activation_comparison.py
-    ├── optimizer_comparison.py
-     ├── mlp_grid_search.py
-     ├── mlp_random_search.py
-     ├── plot_curves.py
-     ├── plot_confusion.py
-     ├── benchmark.py
-     └── hyperparameter_tuning.py
+│   ├── optimizer_comparison.py
+│   ├── mlp_grid_search.py
+│   ├── mlp_random_search.py
+│   ├── plot_curves.py
+│   ├── plot_confusion.py
+│   ├── benchmark.py
+│   └── hyperparameter_tuning.py
 └── README.md
 ```
 
@@ -72,20 +76,27 @@ python src/cnn_model.py
 ### 4. Analysis
 Compare activation functions (ReLU, Sigmoid, Tanh), optimizers (Adam, SGD, RMSprop), or run hyperparameter tuning.
 ```bash
-  python src/activation_comparison.py
-  python src/optimizer_comparison.py
-   python src/mlp_grid_search.py
-   python src/mlp_random_search.py
-    python src/plot_curves.py
-    python src/plot_confusion.py
-    python src/benchmark.py
-    python src/hyperparameter_tuning.py
-    ```
+python src/activation_comparison.py
+python src/optimizer_comparison.py
+python src/mlp_grid_search.py
+python src/mlp_random_search.py
+python src/plot_curves.py
+python src/plot_confusion.py
+python src/benchmark.py
+python src/hyperparameter_tuning.py
+```
 
 ### 5. Deployment
-Start the FastAPI backend server for inference.
+Start the FastAPI backend server for inference:
 ```bash
 uvicorn backend.main:app --reload
+```
+
+Start the React frontend application:
+```bash
+cd frontend
+npm install
+npm start
 ```
 
 ## 🧠 Model Architectures
