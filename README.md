@@ -34,6 +34,7 @@ The goal of this project is to demonstrate the performance difference between de
      ├── mlp_random_search.py
      ├── plot_curves.py
      ├── plot_confusion.py
+     ├── benchmark.py
      └── hyperparameter_tuning.py
 └── README.md
 ```
@@ -74,6 +75,7 @@ Compare activation functions (ReLU, Sigmoid, Tanh), optimizers (Adam, SGD, RMSpr
    python src/mlp_random_search.py
     python src/plot_curves.py
     python src/plot_confusion.py
+    python src/benchmark.py
     python src/hyperparameter_tuning.py
     ```
 
