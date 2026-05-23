@@ -16,6 +16,8 @@ const ImageClassifier = () => {
     if (selectedFile) {
       processFile(selectedFile);
     }
+    // Reset target value to allow uploading same file again
+    e.target.value = '';
   };
 
   const processFile = (selectedFile) => {
