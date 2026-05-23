@@ -32,13 +32,13 @@ async def startup_event():
         mlp_model_path = os.path.join("models", "mlp_baseline.h5")
         
         if os.path.exists(cnn_model_path):
-            cnn_model = load_model(cnn_model_path)
+            cnn_model = load_model(cnn_model_path, compile=False)
             print(f"CNN model loaded from {cnn_model_path}")
         else:
             print(f"Warning: CNN model not found at {cnn_model_path}")
 
         if os.path.exists(mlp_model_path):
-            mlp_model = load_model(mlp_model_path)
+            mlp_model = load_model(mlp_model_path, compile=False)
             print(f"MLP model loaded from {mlp_model_path}")
         else:
             print(f"Warning: MLP model not found at {mlp_model_path}")
