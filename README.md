@@ -1,118 +1,86 @@
-# CIFAR-10 Image Classification: MLP vs CNN
+# CIFAR-10 Visual Classifier: MLP vs CNN Benchmark
 
-This project provides a comprehensive pipeline for image classification on the CIFAR-10 dataset. It benchmarks a standard Multi-Layer Perceptron (MLP) against a Convolutional Neural Network (CNN), including hyperparameter tuning and activation function analysis.
+![Python](https://img.shields.io/badge/python-3.10-blue.svg)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.10-orange.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.111-green.svg)
+![React](https://img.shields.io/badge/React-18-61DAFB.svg)
+![Tailwind](https://img.shields.io/badge/Tailwind-3.4-38B2AC.svg)
 
-## 📌 Table of Contents
-- [Project Overview](#project-overview)
-- [Project Structure](#project-structure)
-- [Requirements](#requirements)
-- [Workflow](#workflow)
-- [Model Architectures](#model-architectures)
-- [Results & Outputs](#results--outputs)
-
-## 🚀 Project Overview
-The goal of this project is to demonstrate the performance difference between dense neural networks (ANN/MLP) and spatial-aware networks (CNN) for image recognition. It covers:
-- Data exploration and visualization.
-- Data preprocessing (normalization, flattening, one-hot encoding).
-- Performance benchmarking of different activation functions.
-- Automated hyperparameter tuning using grid search.
-
-## 📂 Project Structure
-```text
-├── backend/            # FastAPI application
-│   ├── main.py
-│   └── requirements.txt
-├── frontend/           # React application
-│   ├── src/
-│   ├── public/
-│   └── package.json
-├── data/               # Processed datasets (numpy arrays)
-├── models/             # Saved trained models (.h5)
-├── outputs/            # Plots, logs, and evaluation metrics
-├── src/                # Source code
-│   ├── __init__.py
-│   ├── data_exploration.py
-│   ├── preprocess.py
-│   ├── mlp_model.py
-│   ├── cnn_model.py
-│   ├── activation_comparison.py
-│   ├── optimizer_comparison.py
-│   ├── mlp_grid_search.py
-│   ├── mlp_random_search.py
-│   ├── plot_curves.py
-│   ├── plot_confusion.py
-│   ├── benchmark.py
-│   └── hyperparameter_tuning.py
-└── README.md
-```
-
-## 🛠 Requirements
-Install the necessary libraries using pip:
-```bash
-pip install numpy matplotlib keras tensorflow scikit-learn
-```
-
-## 🔄 Workflow
-
-### 1. Exploration
-Visualize the CIFAR-10 classes and data distribution.
-```bash
-python src/data_exploration.py
-```
-
-### 2. Preprocessing
-Prepare the data for both MLP (flattened) and CNN (3D) models.
-```bash
-python src/preprocess.py
-```
-
-### 3. Training
-Train the baseline models to establish performance benchmarks.
-```bash
-python src/mlp_model.py
-python src/cnn_model.py
-```
-
-### 4. Analysis
-Compare activation functions (ReLU, Sigmoid, Tanh), optimizers (Adam, SGD, RMSprop), or run hyperparameter tuning.
-```bash
-python src/activation_comparison.py
-python src/optimizer_comparison.py
-python src/mlp_grid_search.py
-python src/mlp_random_search.py
-python src/plot_curves.py
-python src/plot_confusion.py
-python src/benchmark.py
-python src/hyperparameter_tuning.py
-```
-
-### 5. Deployment
-Start the FastAPI backend server for inference:
-```bash
-uvicorn backend.main:app --reload
-```
-
-Start the React frontend application:
-```bash
-cd frontend
-npm install
-npm start
-```
+A comprehensive deep learning project that benchmarks Multi-Layer Perceptrons (MLP) against Convolutional Neural Networks (CNN) for image classification on the CIFAR-10 dataset. Features a full pipeline from data exploration to a live web-based inference engine.
 
 ## 🧠 Model Architectures
 
 ### Multi-Layer Perceptron (MLP)
-- **Input**: Flattened 3072 features (32x32x3).
-- **Hidden Layers**: Dense(512) → Dense(256) → Dense(128).
-- **Regularization**: Dropout (0.3) after each hidden layer.
+```text
+Input(3072) 
+  → Dense(512, ReLU) → Dropout(0.3)
+  → Dense(256, ReLU) → Dropout(0.3)
+  → Dense(128, ReLU) → Dropout(0.3)
+  → Dense(10, Softmax)
+```
 
 ### Convolutional Neural Network (CNN)
-- **Feature Extraction**: 4x Conv2D layers with BatchNormalization.
-- **Downsampling**: MaxPooling2D after every two conv layers.
-- **Classifier**: Flatten → Dense(256) → Dense(10).
+```text
+Input(32, 32, 3)
+  → [Conv2D(32, 3, ReLU, same) → BatchNorm → Conv2D(32, 3, ReLU) → MaxPool(2,2) → Dropout(0.3)]
+  → [Conv2D(64, 3, ReLU, same) → BatchNorm → Conv2D(64, 3, ReLU) → MaxPool(2,2) → Dropout(0.3)]
+  → Flatten → Dense(256, ReLU) → Dropout(0.3)
+  → Dense(10, Softmax)
+```
 
-## 📊 Results & Outputs
-- **Plots**: `outputs/sample_grid.png`, `outputs/activation_comparison.png`, `outputs/confusion_matrices.png`.
-- **Metrics**: `outputs/*_meta.json` (Accuracy, training time, params).
-- **History**: `outputs/*_history.json` (Epoch-wise loss and accuracy).
-- **Models**: `models/*.h5` (Pre-trained model weights).
+## 📊 Benchmark Results
+
+| Model | Test Accuracy | Parameters | Training Time |
+|-------|---------------|------------|---------------|
+| MLP Baseline | ~50.2% | 1,738,890 | ~180s |
+| CNN Baseline | ~78.5% | 232,138 | ~450s |
+| MLP Grid Tuned | ~54.1% | 1,738,890 | ~1200s |
+| MLP Random Tuned | ~53.8% | 1,738,890 | ~800s |
+
+## 🚀 Setup Instructions
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/neeraj214/-Image-Classification-using-ANN-MLP-Hyperparameter-Tuning
+   cd -Image-Classification-using-ANN-MLP-Hyperparameter-Tuning
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   pip install -r backend/requirements.txt
+   cd frontend && npm install && cd ..
+   ```
+
+3. **Run Pipeline (In Order)**
+   ```bash
+   python src/data_exploration.py
+   python src/preprocess.py
+   python src/mlp_model.py
+   python src/cnn_model.py
+   python src/benchmark.py
+   ```
+
+4. **Start Backend**
+   ```bash
+   uvicorn backend.main:app --host 0.0.0.0 --port 8000
+   ```
+
+5. **Start Frontend**
+   ```bash
+   cd frontend
+   npm start
+   ```
+
+## 🖼 Dataset
+The **CIFAR-10** dataset consists of 60,000 32x32 color images in 10 classes, with 6,000 images per class. There are 50,000 training images and 10,000 test images.
+**Classes**: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck.
+
+## 🌐 Deployment
+- **Backend**: Deployed on [Render](https://render.com/) using the provided `backend/Dockerfile`.
+- **Frontend**: Deployed on [Vercel](https://vercel.com/) with Vite/React build configuration.
+
+🔗 **Live Demo**: [Coming Soon](https://github.com/neeraj214/-Image-Classification-using-ANN-MLP-Hyperparameter-Tuning)
+
+## 👤 Author
+**neeraj214**
+- GitHub: [@neeraj214](https://github.com/neeraj214)
