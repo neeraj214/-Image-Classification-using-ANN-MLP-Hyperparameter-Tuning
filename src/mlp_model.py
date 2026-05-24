@@ -69,7 +69,7 @@ def main():
     history = model.fit(
         X_train_flat,
         y_train,
-        epochs=50,
+        epochs=5,
         batch_size=64,
         validation_split=0.1,
         callbacks=[early_stopping],
