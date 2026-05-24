@@ -1,0 +1,12 @@
+{
+    "mlp_baseline": {
+        "accuracy": 0.36469998955726624,
+        "params": 1738890,
+        "training_time": 35.28808546066284
+    },
+    "cnn_baseline": {
+        "accuracy": 0.7221999764442444,
+        "params": 658602,
+        "training_time": 420.44314432144165
+    }
+}
